@@ -59,7 +59,8 @@
           <li>Krakow Ruby User Group (KRUG) organizer</li>
           <li>Interested in quality-assurance automation tools</li>
           <li>Running a blog about programming</li>
-          <li>Currently building something awesome</li>
+          <li>Did a lot of management stuff</li>
+          <li>Currently building something on my own</li>
           </ul>
         </section>
 
@@ -81,6 +82,10 @@
           <p>
             Before we go beyond something, it might be good to understand what it is
           </p>
+
+          <aside class="notes">
+          Our goal for today is to go beyond the HTTP protocol
+          </aside>
         </section>
 
         <section>
@@ -91,6 +96,10 @@
               <small>Wikipedia</small>
             </footer>
           </blockquote>
+
+          <aside class="notes">
+            The truth is, that we all know what HTTP is, so just as a reminder
+          </aside>
         </section>
 
         <section>
@@ -103,18 +112,33 @@
           <h1>
             HTTP is simple and flexible
           </h1>
+
+          <aside class="notes">
+            One can argue but for me it is  both simple and flexible.
+
+            <p>
+              Yet it is powerful enough to act as a base for both text-pages and complex multitenant SOA systems
+            </p>
+          </aside>
         </section>
 
         <section>
           <h1>
             We all use it all the time
           </h1>
-        </section>
 
-        <section>
-          <h1>
-            We could not live without it as we do
-          </h1>
+          <aside class="notes">
+            <ul>
+              <li>Websites</li>
+              <li>APIs</li>
+              <li>Messaging</li>
+              <li>It's everywhere</li>
+              <li>Desktops</li>
+              <li>Notebooks</li>
+              <li>Mobile</li>
+              <li>Smartwatches</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -131,6 +155,16 @@
 
         <section>
           <h1>
+            We could not live without it as we do
+          </h1>
+
+          <aside class="notes">
+            Life would not be the same and imagine that we would have to stop using it from now on.
+          </aside>
+        </section>
+
+        <section>
+          <h1>
             If it is that good and convenient, why go beyond that?
           </h1>
         </section>
@@ -139,6 +173,10 @@
           <h1>
             Familiarity can blind you
           </h1>
+
+          <aside class="notes">
+            You get used to things you know and if you are lazy (programmers should be), you pick solutions you already know
+          </aside>
         </section>
 
         <section>
@@ -153,22 +191,51 @@
           </h4>
 
           <img src="img/mess.png" style="max-width: 75%; border: 0"/>
+
+          <aside class="notes">
+            <ul>
+              <li>50+ applications</li>
+              <li>Multiple machines</li>
+              <li>Continuous integration</li>
+              <li>Multiple deployments per day</li>
+              <li>Dockerization</li>
+              <li>Some services with more complex logic</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>
             First you get the feeling, then you figure out why
           </h1>
+
+          <aside class="notes">
+            You cannot predict everything at the beginning.
+            It is much easier to look back than too look forward
+          </aside>
         </section>
 
         <section>
           <img src="img/mono.jpeg", style: "border: 0"/>
+
+          <aside class="notes">
+            It's not entirely true
+          </aside>
         </section>
 
         <section>
           <h1>Why should I even care?</h1>
 
           <p class="fragment">(apart from the obvious business reasons)</p>
+
+          <aside class="notes">
+            If you love programming you will care and what is more important, you will feel the quality (or its lack)
+
+            <p>
+              There are many business reasons why it is so important and why you should care (including your salary), but those
+              are just some external motivations. They won't last forever (or long enough).
+            </p>
+          </aside>
         </section>
 
         <section>
@@ -180,11 +247,19 @@
             <footer>
               <small>Robert M. Pirsig</small>
             </footer>
+
+            <aside class="notes">
+              When I have to work with people that don't care about quality at all, I want to do that...
+            </aside>
           </blockquote>
         </section>
 
         <section>
           <img src="img/sw.jpg", style: "border: 0"/>
+
+          <aside class="notes">
+            Luckily it is way more interesting to try to change someonce attitude towards quality, than to force solutions on them :)
+          </aside>
         </section>
 
         <section>
@@ -212,6 +287,10 @@
               Multiple API clients overhead
             </li>
           </ul>
+
+          <aside class="notes">
+            You need to understand the matter with which you're going to work. You need to feel it.
+          </aside>
         </section>
 
         <section>
@@ -226,6 +305,18 @@
           <p class="fragment">
             and sometimes picking a proper solution to a problem, can solve many more
           </p>
+
+          <aside class="notes">
+            Of course the opposite is true as well: you can pick a solution that will create more problems that you've initially had
+          </aside>
+        </section>
+
+        <section>
+          <img src="img/99.jpg"/>
+
+          <aside class="notes">
+            Focus on identifying the source of your problems and you might realise that the source is not in what you did but what you hadn't do
+          </aside>
         </section>
 
         <section>
@@ -240,12 +331,20 @@
           <p class="fragment">
             I would not call chain of requests that get buffered somewhere or that trigger background jobs synchronous
           </p>
+
+          <aside class="notes">
+            You ping one API, that it pings a next one, and that one tries to ping a next one and gets 500, retry, do it again...
+          </aside>
         </section>
 
         <section>
           <h3>Often HTTP in SOA is like some talks we have in our lifes</h3>
 
           <img class="fragment" src="img/grump.jpg"/>
+
+          <aside class="notes">
+            Trying to be sure that you're being listened instead of focusing on business logic, won't end up well for you
+          </aside>
         </section>
 
         <section>
@@ -266,6 +365,18 @@
 
         <section>
           <h1>It really is about messaging</h1>
+
+          <aside class="notes">
+            <ul>
+              <li>Delegate responsibilities</li>
+              <li>Check results</li>
+              <li>Do other stuff</li>
+              <li>Don't wait</li>
+              <li>You don't wait for a reply to an email</li>
+              <li>You don't wait for a reply to a text message</li>
+              <li>And the truth is, you can adapt this approach inside of your software </li>
+            </ul>
+          </aside>
         </section>
 
         <section>
