@@ -1,3 +1,3 @@
-# Karafka – Ruby framework for building Kafka message-based applications
+# World beyond HTTP
 
-Open [http://mensfeld.github.io/karafka-framework-introduction](http://mensfeld.github.io/karafka-framework-introduction)
+Open [http://mensfeld.github.io/world-beyond-http](http://mensfeld.github.io/world-beyond-http)
