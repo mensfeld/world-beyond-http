@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>World beyond HTTP</title>
+
+    <meta name="description" content="Karafka - World beyond HTTP">
+    <meta name="author" content="Maciej Mensfeld">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>World beyond HTTP</h1>
+          <p>
+            <a href="http://mensfeld.pl">Maciej Mensfeld</a> <br/>
+            twitter: <a href="http://twitter.com/maciejmensfeld">@maciejmensfeld</a> </br>
+            www: <a href="http://mensfeld.pl">mensfeld.pl</a> <br/>
+            e-mail: <a href="mailto:maciej@mensfeld.pl">maciej@mensfeld.pl</a>
+          </p>
+        </section>
+
+        <section>
+          <h1>$ whoami</h1>
+
+          <ul>
+          <li>9 years of commercial exp in IT</li>
+          <li>7 years with Ruby and Rails</li>
+          <li>Krakow Ruby User Group (KRUG) organizer</li>
+          <li>Interested in quality-assurance automation tools</li>
+          <li>Running a blog about programming</li>
+          <li>Currently building something awesome</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Please notify me if...</h2>
+
+          <ul>
+          <li>I speak 2 fast</li>
+          <li>I should repeat something</li>
+          <li>I should explain something better</li>
+          <li>You have any questions</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            Almighty HTTP
+          </h3>
+          <p>
+            Before we go beyond something, it might be good to understand what it is
+          </p>
+        </section>
+
+        <section>
+          <blockquote>
+            “The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web.”
+
+            <footer>
+              <small>Wikipedia</small>
+            </footer>
+          </blockquote>
+        </section>
+
+        <section>
+          <h1>
+            I &lt;3 HTTP
+          </h1>
+        </section>
+
+        <section>
+          <h1>
+            HTTP is simple and flexible
+          </h1>
+        </section>
+
+        <section>
+          <h1>
+            We all use it all the time
+          </h1>
+        </section>
+
+        <section>
+          <h1>
+            We could not live without it as we do
+          </h1>
+        </section>
+
+        <section>
+          <h4>
+            It is the underlying cause for HTTP Status Cats API Website
+          </h4>
+
+          <p>
+            http://http.cat
+          </p>
+
+          <img src="img/408.jpg" style="max-width: 60%"/>
+        </section>
+
+        <section>
+          <h1>
+            If it is that good and convenient, why go beyond that?
+          </h1>
+        </section>
+
+        <section>
+          <h1>
+            Familiarity can blind you
+          </h1>
+        </section>
+
+        <section>
+          <h1>
+            And this is what happened to me...
+          </h1>
+        </section>
+
+        <section>
+          <h4>
+            Ladies and gentlemen: the mess
+          </h4>
+
+          <img src="img/mess.png" style="max-width: 75%; border: 0"/>
+        </section>
+
+        <section>
+          <h1>
+            First you get the feeling, then you figure out why
+          </h1>
+        </section>
+
+        <section>
+          <img src="img/mono.jpeg", style: "border: 0"/>
+        </section>
+
+        <section>
+          <h1>Why should I even care?</h1>
+
+          <p class="fragment">(apart from the obvious business reasons)</p>
+        </section>
+
+        <section>
+          <h2>Quality matters</h2>
+
+          <blockquote>
+            Care and Quality are internal and external aspects of the same thing. A person who sees Quality and feels it as he works is a person who cares. A person who cares about what he sees and does is a person who’s bound to have some characteristic of quality.
+
+            <footer>
+              <small>Robert M. Pirsig</small>
+            </footer>
+          </blockquote>
+        </section>
+
+        <section>
+          <img src="img/sw.jpg", style: "border: 0"/>
+        </section>
+
+        <section>
+          <h3>
+            But this was meant to be a technical talk, not a philosophical one...
+          </h3>
+        </section>
+
+        <section>
+          <h3>
+            But programming is a form of art and before you fix something, you need to know what the problems are
+          </h3>
+
+          <ul>
+            <li class="fragment">
+              Performance
+            </li>
+            <li class="fragment">
+              Eventual consistency (that might never happen)
+            </li>
+            <li class="fragment">
+              Operational complexity
+            </li>
+            <li class="fragment">
+              Multiple API clients overhead
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            There is an infinite number of solutions for each problem
+          </h2>
+
+          <p class="fragment">
+            But you need to pick one
+          </p>
+
+          <p class="fragment">
+            and sometimes picking a proper solution to a problem, can solve many more
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Many problems with SOA come from heavily relying on HTTP and synchronius requests that...
+          </p>
+
+          <p class="fragment">
+            aren't really synchronius
+          </p>
+
+          <p class="fragment">
+            I would not call chain of requests that get buffered somewhere or that trigger background jobs synchronous
+          </p>
+        </section>
+
+        <section>
+          <h3>Often HTTP in SOA is like some talks we have in our lifes</h3>
+
+          <img class="fragment" src="img/grump.jpg"/>
+        </section>
+
+        <section>
+          <h3>Life is not synchronous</h3>
+
+          <p class="fragment">
+            So why our software should be?
+          </p>
+        </section>
+
+        <section>
+          <h3>Let's clean this mess by going beyond HTTP</h3>
+
+          <p class="fragment">
+            Finally...
+          </p>
+        </section>
+
+        <section>
+          <h1>It really is about messaging</h1>
+        </section>
+
+        <section>
+          <img class="" src="img/kafka.png" style='border: 0'/>
+        </section>
+
+        <section>
+          <h4>What is Apache Kafka?</h4>
+
+          <ul>
+            <li>Kafka is a high-throughput distributed messaging system</li>
+            <li>Kafka is designed to allow a single cluster to serve as the central data backbone for a large organization</li>
+            <li>It can be elastically and transparently expanded without downtime</li>
+            <li>It provides broadcasting to many applications</li>
+            <li>Allows to build systems that are event based</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>Who uses Apache Kafka?</h4>
+
+          <p>
+            Linkedin (650 terabytes of consumed messages daily), Yahoo, Twitter, Netflix, Square, Spotify, Pinterest, Uber, Onet, Tumblr, Cisco, Foursquare, Shopify, Oracle, Urban Airship, OVH, ...
+          </p>
+        </section>
+
+        <section>
+          <h4>Multiple API clients overhead</h4>
+
+          <p>
+            Without a broker you need to add code to both ends of your SOA system
+          </p>
+
+          <img src="img/karafka1.png"/>
+        </section>
+
+        <section>
+          <h4>Multiple API clients overhead</h4>
+
+          <p>
+          With a broker all you need to know is topic on which you want to listen and a message format
+          </p>
+
+          <img src="img/karafka2.png" style="max-width: 45%"/>
+        </section>
+
+        <section>
+          <img src="img/simple.png" style="border: 0;"/>
+        </section>
+
+        <section>
+          <h4>Kafka + Ruby</h4>
+
+
+          <img src="img/karafka-04.png" style="border: 0; box-shadow: 0 0 0 0;"/>
+        </section>
+
+
+        <section>
+          <h4>What is Karafka?</h4>
+
+          <ul>
+            <li>Karafka = Kafka + Ruby => KaR(uby)afka</li>
+            <li>A microframework </li>
+            <li>It was designed to simplify Kafka based applications development</li>
+            <li>It allows developers to build "Rails like" apps that consume and produce messages</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>Why Karafka was developed?</h4>
+
+          <ul>
+            <li>We needed a tool that would allow us to build applications faster</li>
+            <li>We needed a tool that would allow us to process faster</li>
+            <li>We needed a tool that would allow us to handle events and messages from many sources and process them the same way</li>
+            <li>Because single message can be automatically delivered to many Karafka applications</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>But we have HTTP and REST, why go beyond?</h4>
+
+          <ul>
+            <li>o provide broadcasting, not being a part of HTTP standard</li>
+            <li>To trigger many actions based on a single event</li>
+            <li>To not maintain internal API clients</li>
+            <li>Without a broker it is harder to replace microservices transparently</li>
+            <li>Better microservices isolation</li>
+            <li>You can create new microservices that use multiple different events from many sources</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>Karafka uses goods that are already well known</h4>
+
+          <ul>
+            <li>Poseidon as a consumer (soon 2 be switched to Ruby-Kafka)</li>
+            <li>Celluloid introducing sockets clustering inside threads</li>
+            <li>Sidekiq to support background data processing</li>
+            <li>Rails app structure concept for bigger apps</li>
+            <li>Sinatra app structure concept for small apps</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>How can I start using it?</h4>
+
+<pre><code data-trim>
+# Gemfile
+source 'https://rubygems.org'
+
+gem 'karafka', github: 'karafka/karafka'
+</code></pre>
+
+<pre><code data-trim>
+bundle install
+bundle exec karafka install
+</code></pre>
+
+          <p>
+            Then open app.rb and update configuration settings
+          </p>
+        </section>
+
+        <section>
+          <p>
+          All the configutation options are described here:<br/><a href="https://github.com/karafka/karafka">github.com/karafka/karafka</a>
+          </p>
+        </section>
+
+        <section>
+          <h4>Karafka conventions and features</h4>
+        </section>
+
+        <section>
+          <h4>Karafka has a routing engine similar to Rails</h4>
+
+<pre><code data-trim>
+App.routes.draw do
+  topic :incoming_messages do
+    group :composed_application
+    controller Videos::DetailsController
+    worker Workers::DetailsWorker
+  end
+
+  # If you work with JSON data, only controller is required
+  topic :new_videos do
+    controller Videos::NewVideosController
+  end
+end
+</code></pre>
+
+        </section>
+
+        <section>
+          <h4>Karafka controllers and workers</h4>
+
+<pre><code data-trim>
+NewVideosController  #=> NewVideosWorker
+Users::PaymentsController #=> Users::PaymentsWorker
+</code></pre>
+
+          <p>
+            Karafka by default builds a worker class per controller based on a controller name. This allows to prioritize (if needed) Sidekiq workers
+          </p>
+
+
+        </section>
+
+        <section>
+          <h4>You can overwrite default behaviours</h4>
+
+<pre><code data-trim>
+  # If you work with JSON data, only controller is required
+  topic :new_videos do
+    controller Videos::NewVideosController
+    # Instead of a default Videos::NewVideosWorker
+    worker Videos::DifferentWorker
+  end
+end
+</code></pre>
+        </section>
+
+
+        <section>
+          <h4>#perform</h4>
+
+          <p>
+            Karafka controllers are simple. All you need is a #perform method that will be executed asynchronously in response to an incoming message
+          </p>
+<pre><code data-trim>
+class CreateVideosController < Karafka::BaseController
+  def perform
+    Video.create!(params[:video])
+  end
+end
+</code></pre>
+        </section>
+
+        <section>
+          <h4>#before_enqueue filter</h4>
+
+          <p>
+             Acts in a similar way to Rails #before_action
+          </p>
+<pre><code data-trim>
+class CreateVideosController < Karafka::BaseController
+  before_enqueue -> {
+    # Reject old incoming messages
+    # When before_enqueue returns false,
+    # task won't be send to Sidekiq
+    return false if params[:sent_at] < 1.minute.ago
+  }
+end
+</code></pre>
+
+          <p>
+            It can be used to provide first layer data filtering. If it returns false, Sidekiq task won't be scheduled
+          </p>
+        </section>
+
+        <section>
+          <h4>CLI</h4>
+
+There are also few usefull CLI commands available:
+
+<pre><code data-trim>
+bundle exec karafka [COMMAND]
+
+help    # Describe available commands or one specific command
+console # Start the Karafka console (short-cut alias: "c")
+info    # Print configuration details and other options
+install # Install all required things for Karafka application
+routes  # Print out all defined routes in alphabetical order
+server  # Start the Karafka server (short-cut alias: "s")
+topics  # List all topics available on Karafka server
+worker  # Start the Karafka Sidekiq worker
+</pre></code>
+        </section>
+
+        <section>
+          <h4>Karafka performance</h4>
+
+          <ul>
+            <li>Is strongly dependent on what you do in your code</li>
+            <li>Redis performance (for Sidekiq) is a factor as well</li>
+            <li>Message size is a factor</li>
+            <li>Single process can handle around 30 000 messages/sec</li>
+            <li>Less than a ms to send a message with the slowest (secure) mode (Kafka request.required.acks -1) </li>
+            <li>Less than 1/10 of a ms to send a message with in the 0 mode (Kafka request.required.acks 0) </li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>Karafka framework scalability</h4>
+
+          <p>
+            Each scaling strategy targets a different problem
+          </p>
+
+          <p>
+            Scaling strategies can be combined
+          </p>
+
+          <p>
+            Following strategies are available:
+          </p>
+
+          <ul>
+            <li>Scaling using multiple Karafka threads</li>
+            <li>Scaling using Kafka partitions</li>
+            <li>Scaling using Karafka clusterization (in progress)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>I want to integrate it with my Rails/Sinatra app</h4>
+
+          <ul>
+            <li>The best approach is to start generating messages from your current applications
+            </li>
+            <li>Messaging allows you to tell your Karafka apps what your other Ruby components are doing</li>
+          </ul>
+
+<pre><code data-trim>
+def create
+  video = Video.create!(params[:video])
+  WaterDrop::Message.new(:video_created, video.to_json).send!
+  respond_with video
+end
+</pre></code>
+
+          <ul>
+            <li>Once you start sending messages, you can extract functionalities and responsibilities and move them to Karafka based applications</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>
+            so back to the big question:
+          </p>
+
+          <h2>Why to go beyond?</h2>
+        </section>
+
+        <section>
+          <blockquote>
+            One geometry cannot be more true than another; it can only be more convenient. Geometry is not true, it is advantageous.
+
+            <footer>
+              <small>Robert M. Pirsig</small>
+            </footer>
+          </blockquote>
+
+          <p>&nbsp;</p>
+
+          <p class="fragment">
+            and the same applies to IT technologies
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Going beyond your comfort zone can provide you with better solutions for current and upcoming problems.
+          </p>
+        </section>
+
+        <section>
+          <h2>WANT TO CONTRIBUTE?</h2>
+
+          <p>
+            <a href="https://github.com/karafka">github.com/karafka</a>
+          </p>
+
+
+          <p>
+            <img src="img/github.png" style="background: none; border: none; box-shadow: 0 0 0 0 #fff; margin: 0; padding: 0;"/>
+          </p>
+
+          <ul>
+            <li>The more people star it, the more people use it</li>
+            <li>The more people use it, the more people star it</li>
+            <li>There are many issues you can help us fix</li>
+            <li>We use many QA tools to maintain the quality</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>READ MORE</h2>
+
+          <ul>
+            <li><a href="https://github.com/karafka/karafka">github.com/karafka/karafka</a></li>
+            <li><a href="https://github.com/karafka">github.com/karafka</a></li>
+            <li><a href="http://dev.mensfeld.pl/tag/karafka">dev.mensfeld.pl/tag/karafka</a></li>
+            <li><a href="http://kafka.apache.org/">kafka.apache.org</a></li>
+            <li><a href="https://zookeeper.apache.org">zookeeper.apache.org</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>THE END - Q &amp; A</h1>
+
+          <ul>
+            <li><a href="https://github.com/karafka">github.com/karafka</a></li>
+            <li><a href="mailto:maciej@mensfeld.pl">maciej@mensfeld.pl</a></li>
+            <li><a href="http://twitter.com/maciejmensfeld">@maciejmensfeld</a></li>
+            <li><a href="http://mensfeld.pl">mensfeld.pl</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
